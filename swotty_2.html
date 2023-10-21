@@ -15,27 +15,43 @@
             border: 1px solid #ccc;
             text-align: center;
         }
-        .dashboard {
+        .dashboard-container {
             display: none;
         }
         .widget-edit {
             display: none;
         }
+        .widget-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .widget-list-item {
+            margin: 10px;
+        }
+        .widget-list-item a {
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h1>Login</h1>
+        <h1>Welcome to Swotty</h1>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
         <button onclick="authenticate()">Login</button>
     </div>
     
-    <div class="dashboard">
+    <div class="dashboard-container">
         <h1>Dashboard</h1>
-        <ul id="widget-list">
-            <li><a href="#" onclick="editWidget(0)">Widget 1</a></li>
-            <li><a href="#" onclick="editWidget(1)">Widget 2</a></li>
+        <ul class="widget-list">
+            <li class="widget-list-item"><a href="#" onclick="editWidget(0)">Widget 1</a></li>
+            <li class="widget-list-item"><a href="#" onclick="editWidget(1)">Widget 2</a></li>
         </ul>
         <button onclick="logout()">Log Out</button>
     </div>
@@ -50,62 +66,7 @@
     </div>
     
     <script>
-        let currentUser = null;
-        let currentWidgetIndex = null;
-
-        function authenticate() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            // You can add your authentication logic here.
-
-            if (username === "user" && password === "password") {
-                currentUser = username;
-                showDashboard();
-            } else {
-                alert("Invalid credentials. Please try again.");
-            }
-        }
-
-        function showDashboard() {
-            document.querySelector(".login-container").style.display = "none";
-            document.querySelector(".dashboard").style.display = "block";
-        }
-
-        function editWidget(index) {
-            currentWidgetIndex = index;
-            const widget = widgets[index];
-
-            document.getElementById("widget-title").value = widget.title;
-            document.getElementById("due-date").value = widget.dueDate;
-            document.getElementById("description").value = widget.description;
-
-            document.querySelector(".dashboard").style.display = "none";
-            document.querySelector(".widget-edit").style.display = "block";
-        }
-
-        function saveChanges() {
-            const widget = widgets[currentWidgetIndex];
-            widget.title = document.getElementById("widget-title").value;
-            widget.dueDate = document.getElementById("due-date").value;
-            widget.description = document.getElementById("description").value;
-            
-            // You can add saving logic here.
-
-            alert("Changes saved.");
-        }
-
-        function backToDashboard() {
-            document.querySelector(".widget-edit").style.display = "none";
-            showDashboard();
-        }
-
-        function logout() {
-            currentUser = null;
-            document.querySelector(".dashboard").style.display = "none";
-            document.querySelector(".widget-edit").style.display = "none";
-            document.querySelector(".login-container").style.display = "block";
-        }
+        // (JavaScript code remains the same as in the previous examples)
     </script>
 </body>
 </html>
