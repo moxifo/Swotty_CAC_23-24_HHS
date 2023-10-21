@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swotty - Minimalist Aesthetic</title>
+    <style>
+        body {
+            font-family: 'Courier', monospace;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .dashboard {
+            display: none;
+        }
+        .widget-edit {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="authenticate()">Login</button>
+    </div>
+    
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        <ul id="widget-list">
+            <li><a href="#" onclick="editWidget(0)">Widget 1</a></li>
+            <li><a href="#" onclick="editWidget(1)">Widget 2</a></li>
+        </ul>
+        <button onclick="logout()">Log Out</button>
+    </div>
+    
+    <div class="widget-edit">
+        <h1>Edit Widget</h1>
+        <input type="text" id="widget-title">
+        <input type="text" id="due-date">
+        <textarea id="description"></textarea>
+        <button onclick="saveChanges()">Save Changes</button>
+        <button onclick="backToDashboard()">Back to Dashboard</button>
+    </div>
+    
+    <script>
+        let currentUser = null;
+        let currentWidgetIndex = null;
+
+        function authenticate() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            // You can add your authentication logic here.
+
+            if (username === "user" && password === "password") {
+                currentUser = username;
+                showDashboard();
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+
+        function showDashboard() {
+            document.querySelector(".login-container").style.display = "none";
+            document.querySelector(".dashboard").style.display = "block";
+        }
+
+        function editWidget(index) {
+            currentWidgetIndex = index;
+            const widget = widgets[index];
+
+            document.getElementById("widget-title").value = widget.title;
+            document.getElementById("due-date").value = widget.dueDate;
+            document.getElementById("description").value = widget.description;
+
+            document.querySelector(".dashboard").style.display = "none";
+            document.querySelector(".widget-edit").style.display = "block";
+        }
+
+        function saveChanges() {
+            const widget = widgets[currentWidgetIndex];
+            widget.title = document.getElementById("widget-title").value;
+            widget.dueDate = document.getElementById("due-date").value;
+            widget.description = document.getElementById("description").value;
+            
+            // You can add saving logic here.
+
+            alert("Changes saved.");
+        }
+
+        function backToDashboard() {
+            document.querySelector(".widget-edit").style.display = "none";
+            showDashboard();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.querySelector(".dashboard").style.display = "none";
+            document.querySelector(".widget-edit").style.display = "none";
+            document.querySelector(".login-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>
