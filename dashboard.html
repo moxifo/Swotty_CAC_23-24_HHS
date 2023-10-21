@@ -4,19 +4,19 @@
     <title>Dashboard Home</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: Georgia, serif; /* Change font to Georgia */
+            background-color: #f0f8ff; /* Light blue background */
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #333;
+            background-color: #3f51b5; /* Dark blue header background */
             color: #fff;
             text-align: center;
             padding: 20px 0;
         }
         nav {
-            background-color: #444;
+            background-color: #303f9f; /* Slightly lighter blue for navigation */
             color: #fff;
             text-align: center;
             padding: 10px 0;
@@ -42,11 +42,16 @@
         }
         .widget {
             flex: 1;
-            background-color: #e1e1e1;
+            background-color: #90caf9; /* Light blue widgets */
             margin: 10px;
             padding: 20px;
             border-radius: 5px;
             text-align: center;
+            cursor: pointer; /* Make widgets clickable */
+            transition: background-color 0.3s; /* Smooth color change on hover */
+        }
+        .widget:hover {
+            background-color: #64b5f6; /* Darker blue on hover */
         }
     </style>
 </head>
@@ -62,37 +67,26 @@
     <div class="container">
         <h1>Welcome to Your Dashboard</h1>
         <div class="dashboard-content">
-            <div class="widget">
+            <div class="widget" onclick="handleWidgetClick(1)">
                 <h2>Widget 1</h2>
-                <p>Content for Widget 1</p>
+                <p>Click me! Widget 1 content.</p>
             </div>
-            <div class="widget">
+            <div class="widget" onclick="handleWidgetClick(2)">
                 <h2>Widget 2</h2>
-                <p>Content for Widget 2</p>
+                <p>Click me! Widget 2 content.</p>
             </div>
-            <div class="widget">
+            <div class="widget" onclick="handleWidgetClick(3)">
                 <h2>Widget 3</h2>
-                <p>Content for Widget 3</p>
+                <p>Click me! Widget 3 content.</p>
             </div>
         </div>
     </div>
+
+    <script>
+        function handleWidgetClick(widgetNumber) {
+            alert("You clicked Widget " + widgetNumber);
+        }
+    </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Swotty File Writer</title>
-</head>
-<body>
-    <h1>Create a Swotty File</h1>
-    <form action="/write_file.py" method="post">
-        <label for="filename">File Name:</label>
-        <input type="text" id="filename" name="filename" required>
-        <br>
-        <label for="content">File Content:</label>
-        <textarea id="content" name="content" rows="4" cols="50" required></textarea>
-        <br>
-        <input type="submit" value="Create File">
-    </form>
-</body>
-</html>
+
