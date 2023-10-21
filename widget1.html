@@ -15,17 +15,35 @@
             <input type="date" id="due-date" name="due-date" value="YYYY-MM-DD" required>
             <input type="submit" value="Save Changes">
         </form>
+        <button id="back-button">Back to Dashboard</button>
     </div>
     <script>
         const widgetForm = document.getElementById('widget-form');
+        const descriptionInput = document.getElementById('description');
+        const dueDateInput = document.getElementById('due-date');
+        const widgetTitle = document.getElementById('widget-title');
+        const backButton = document.getElementById('back-button');
+
+        // Load user's saved changes (if any) from local storage
+        if (localStorage.getItem('widget1_description')) {
+            descriptionInput.value = localStorage.getItem('widget1_description');
+            widgetTitle.textContent = descriptionInput.value;
+        }
+        if (localStorage.getItem('widget1_due_date')) {
+            dueDateInput.value = localStorage.getItem('widget1_due_date');
+        }
+
         widgetForm.addEventListener('submit', function (event) {
             event.preventDefault();
-            const widgetTitle = document.getElementById('widget-title');
-            const descriptionInput = document.getElementById('description');
-            const dueDateInput = document.getElementById('due-date');
+            // Save user's changes to local storage
+            localStorage.setItem('widget1_description', descriptionInput.value);
+            localStorage.setItem('widget1_due_date', dueDateInput.value);
+            // Update widget title with the user's input
             widgetTitle.textContent = descriptionInput.value;
-            descriptionInput.value = descriptionInput.value;
-            dueDateInput.value = dueDateInput.value;
+        });
+
+        backButton.addEventListener('click', function () {
+            window.location.href = 'dashboard.html'; // Update this URL as needed
         });
     </script>
 </body>
