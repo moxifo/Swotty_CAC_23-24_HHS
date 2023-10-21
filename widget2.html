@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Widget 2</title>
-    <link rel="stylesheet" href="widget2.css">
+    <link rel="stylesheet" href="widget2.css"> <!-- Link to widget-specific CSS -->
 </head>
 <body>
     <div class="container">
@@ -10,7 +10,7 @@
             <h1 contenteditable="true" id="widget-title">Widget 2</h1>
             <form id="widget-form">
                 <label for="description">Description:</label>
-                <input type="text" id="description" name="description" value="Content for Widget 1" required>
+                <input type="text" id="description" name="description" value="Content for Widget 2" required>
                 <label for="due-date">Due Date:</label>
                 <input type="date" id="due-date" name="due-date" value="YYYY-MM-DD" required>
                 <input type="submit" value="Save Changes">
@@ -25,25 +25,26 @@
         const dueDateInput = document.getElementById('due-date');
         const backButton = document.getElementById('back-button');
 
+        // Use a unique key for this widget in local storage
+        const storageKey = 'widget2_data';
+
         // Load user's saved changes (if any) from local storage
-        if (localStorage.getItem('widget2_title')) {
-            widgetTitle.textContent = localStorage.getItem('widget1_title');
-        }
-        if (localStorage.getItem('widget2_description')) {
-            descriptionInput.value = localStorage.getItem('widget1_description');
-        }
-        if (localStorage.getItem('widget2_due_date')) {
-            dueDateInput.value = localStorage.getItem('widget1_due_date');
+        if (localStorage.getItem(storageKey)) {
+            const data = JSON.parse(localStorage.getItem(storageKey));
+            widgetTitle.textContent = data.title;
+            descriptionInput.value = data.description;
+            dueDateInput.value = data.dueDate;
         }
 
         widgetForm.addEventListener('submit', function (event) {
             event.preventDefault();
             // Save user's changes to local storage
-            localStorage.setItem('widget2_title', widgetTitle.textContent);
-            localStorage.setItem('widget2_description', descriptionInput.value);
-            localStorage.setItem('widget2_due_date', dueDateInput.value);
-            // Notify the dashboard about the title change
-            parent.postMessage({ title: widgetTitle.textContent }, '*');
+            const data = {
+                title: widgetTitle.textContent,
+                description: descriptionInput.value,
+                dueDate: dueDateInput.value
+            };
+            localStorage.setItem(storageKey, JSON.stringify(data));
         });
 
         backButton.addEventListener('click', function () {
@@ -52,4 +53,3 @@
     </script>
 </body>
 </html>
-
