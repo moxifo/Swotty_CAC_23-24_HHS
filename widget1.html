@@ -32,18 +32,20 @@
         if (localStorage.getItem('widget1_due_date')) {
             dueDateInput.value = localStorage.getItem('widget1_due_date');
         }
-        
+
         widgetForm.addEventListener('submit', function (event) {
             event.preventDefault();
             // Save user's changes to local storage
             localStorage.setItem('widget1_description', descriptionInput.value);
             localStorage.setItem('widget1_due_date', dueDateInput.value);
             // Update widget title with the user's input
-            widgetTitle.textContent = widgetTitle.textContent; // Update the title from contenteditable
+            widgetTitle.textContent = descriptionInput.value;
+            // Notify the dashboard about the title change
+            parent.postMessage({ title: descriptionInput.value }, '*');
         });
 
         backButton.addEventListener('click', function () {
-            window.location.href = 'dashboard.html'; // Update this URL as needed
+            window.location.href = 'dashboard.html';
         });
     </script>
 </body>

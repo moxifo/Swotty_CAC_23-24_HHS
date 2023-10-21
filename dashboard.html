@@ -89,4 +89,46 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Home</title>
+    <style>
+        /* Dashboard styling remains the same as before */
+        /* ... */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dashboard Home</h1>
+    </header>
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="dashboard-content">
+            <div class="widget">
+                <!-- Use an iframe to embed widget1.html -->
+                <iframe src="widget1.html" frameborder="0" scrolling="no" width="100%" height="200"></iframe>
+            </div>
+            <!-- Add more widgets here -->
+        </div>
+    </div>
+    <script>
+        // Receive the title change message from widget1.html
+        window.addEventListener('message', function (event) {
+            if (event.origin !== 'http://your-domain.com') {  // Update with your domain
+                return;
+            }
+            const title = event.data.title;
+            // Update the widget title in the dashboard
+            const widgetTitle = document.querySelector('.widget h2 a');
+            widgetTitle.textContent = title;
+        });
+    </script>
+</body>
+</html>
 
