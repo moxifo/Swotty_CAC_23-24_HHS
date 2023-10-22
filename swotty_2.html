@@ -10,13 +10,15 @@
         <h1>Welcome to Swotty</h1>
     </header>
     <main style="background-color: #f4f4f4; text-align: center; display: flex; align-items: center; justify-content: center; height: 100vh;">
-        <div class="login-container" style="width: 300px; padding: 20px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+        <div class="login-container" style="width: 300px; padding: 20px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
             <h2>Login</h2>
             <form action="dashboard.html" method="post">
-                <label for="username" style="display: block; text-align: left; color: #333;">Username:</label>
-                <input type="text" id="username" name="username" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <label for="password" style="display: block; text-align: left; color: #333;">Password:</label>
-                <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <div style="text-align: left;"> <!-- Centered input fields -->
+                    <label for="username" style="display: block; color: #333;">Username:</label>
+                    <input type="text" id="username" name="username" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <label for="password" style="display: block; color: #333;">Password:</label>
+                    <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                </div>
                 <button type="submit" style="background-color: #000; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Login</button>
             </form>
         </div>
