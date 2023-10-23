@@ -4,9 +4,25 @@
     <title>Swotty Login</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'FF Kievit', serif;
             background-color: #f4f4f4;
             text-align: center;
+        }
+
+        .header-bar {
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #000;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .swotty-title {
+            margin-left: 20px;
+        }
+
+        .login-get-started {
+            margin-right: 20px;
         }
 
         .login-container {
@@ -48,14 +64,22 @@
     </style>
 </head>
 <body>
+    <div class="header-bar">
+        <div class="swotty-title">Swotty</div>
+        <div class="login-get-started">
+            <span>Login</span>
+            <span>Get Started</span>
+        </div>
+    </div>
+
     <div class="login-container">
-        <h2>Swotty Login</h2>
+        <h2>Welcome Back</h2>
         <form action="dashboard.html" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Continue</button>
         </form>
     </div>
 </body>
