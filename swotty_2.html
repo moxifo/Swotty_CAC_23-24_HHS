@@ -51,6 +51,11 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: none;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
         }
 
         .login-container.active {
@@ -101,13 +106,17 @@
             width: 100%;
             margin-top: 20px;
         }
+
+        .login-text {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="header-bar">
         <div class="swotty-title">Swotty</div>
         <div class="login-get-started">
-            <span>Login</span>
+            <span class="login-text">Login</span>
             <span class="get-started-box">Get Started</span>
         </div>
     </div>
@@ -119,7 +128,7 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Continue</button>
+            <button type="submit" style="background-color: grey;">Continue</button>
         </form>
     </div>
 
@@ -132,5 +141,14 @@
     </div>
 
     <div class="bar-line"></div>
+
+    <script>
+        const loginText = document.querySelector('.login-text');
+        const loginContainer = document.querySelector('.login-container');
+
+        loginText.addEventListener('click', () => {
+            loginContainer.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
