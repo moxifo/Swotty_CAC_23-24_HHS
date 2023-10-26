@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Home</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        /* Additional CSS for modal */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dashboard Home</h1>
+    </header>
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Reports</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="dashboard-content">
+            <div class="widget" onclick="handleWidgetClick(1)">
+                <h2><a href="widget1.html">Widget 1</a></h2>
+                <p>Click me! Widget 1 content.</p>
+            </div>
+            <div class="widget" onclick="handleWidgetClick(2)">
+                <h2><a href="widget2.html">Widget 2</a></h2>
+                <p>Click me! Widget 2 content.</p>
+            </div>
+            <div class="widget" onclick="handleWidgetClick(3)">
+                <h2><a href="widget3.html">Widget 3</a></h2>
+                <p>Click me! Widget 3 content.</p>
+            </div>
+        </div>
+    </div>
+    <button id="add-widget-button" onclick="openCreateWidgetModal()">Add Widget</button>
+
+    <!-- Modal for creating widgets -->
+    <div class="modal-bg" id="create-widget-modal">
+        <div class="modal-content">
+            <h2>Create Widget</h2>
+            <label for="widget-title">Title:</label>
+            <input type="text" id="widget-title" required>
+            <label for="widget-description">Description:</label>
+            <input type="text" id="widget-description" required>
+            <label for="widget-due-date">Due Date:</label>
+            <input type="date" id="widget-due-date" required>
+            <button onclick="createWidget()">Create</button>
+            <button onclick="closeCreateWidgetModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function handleWidgetClick(widgetNumber) {
+            alert("You clicked Widget " + widgetNumber);
+        }
+
+        function openCreateWidgetModal() {
+            const createWidgetModal = document.getElementById('create-widget-modal');
+            createWidgetModal.style.display = 'block';
+        }
+
+        function closeCreateWidgetModal() {
+            const createWidgetModal = document.getElementById('create-widget-modal');
+            createWidgetModal.style.display = 'none';
+        }
+
+        function createWidget() {
+            // Add logic to create and append new widgets here
+            closeCreateWidgetModal();
+        }
+    </script>
+</body>
+</html>
