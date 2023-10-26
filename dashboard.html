@@ -3,6 +3,14 @@
 <head>
     <title>Dashboard Home</title>
     <link rel="stylesheet" href="dashboard.css">
+    <style>
+        /* Add custom CSS for the "Add New" button */
+        .add-new-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -11,10 +19,12 @@
     <nav>
         <a href="#">Dashboard</a>
         <a href="#">Reports</a>
-        <a href="settings.html">Settings</a> <!-- Updated link to "settings.html" -->
+        <a href="settings.html">Settings</a>
     </nav>
     <div class="container">
         <h1>Welcome to Your Dashboard</h1>
+        <!-- Add the "Add New" button -->
+        <button class="add-new-button" onclick="createNewWidget()">Add New</button>
         <div class="dashboard-content">
             <div class="widget" onclick="handleWidgetClick(1)">
                 <h2><a href="widget1.html">Widget 1</a></h2>
@@ -34,6 +44,12 @@
     <script>
         function handleWidgetClick(widgetNumber) {
             alert("You clicked Widget " + widgetNumber);
+        }
+
+        // Function to create a new widget (customize as needed)
+        function createNewWidget() {
+            // Implement your logic to create a new widget here
+            alert("Creating a new widget");
         }
     </script>
 </body>
