@@ -40,18 +40,7 @@
     <div class="container">
         <h1>Welcome to Your Dashboard</h1>
         <div class="dashboard-content">
-            <div class="widget" onclick="handleWidgetClick(1)">
-                <h2><a href="widget1.html">Widget 1</a></h2>
-                <p>Click me! Widget 1 content.</p>
-            </div>
-            <div class="widget" onclick="handleWidgetClick(2)">
-                <h2><a href="widget2.html">Widget 2</a></h2>
-                <p>Click me! Widget 2 content.</p>
-            </div>
-            <div class="widget" onclick="handleWidgetClick(3)">
-                <h2><a href="widget3.html">Widget 3</a></h2>
-                <p>Click me! Widget 3 content.</p>
-            </div>
+            <!-- Widgets are added dynamically here using JavaScript -->
         </div>
     </div>
     <button id="add-widget-button" onclick="openCreateWidgetModal()">Add Widget</button>
@@ -87,7 +76,27 @@
         }
 
         function createWidget() {
-            // Add logic to create and append new widgets here
+            // Get input values
+            const title = document.getElementById('widget-title').value;
+            const description = document.getElementById('widget-description').value;
+            const dueDate = document.getElementById('widget-due-date').value;
+
+            // Create a new widget element
+            const widgetDiv = document.createElement('div');
+            widgetDiv.className = 'widget';
+            widgetDiv.onclick = function () {
+                handleWidgetClick(document.querySelectorAll('.widget').length + 1);
+            };
+            widgetDiv.innerHTML = `
+                <h2>${title}</h2>
+                <p>${description}</p>
+            `;
+
+            // Append the new widget to the dashboard
+            const dashboardContent = document.querySelector('.dashboard-content');
+            dashboardContent.appendChild(widgetDiv);
+
+            // Close the modal
             closeCreateWidgetModal();
         }
     </script>
