@@ -61,8 +61,11 @@
     </div>
 
     <script>
+        let widgetCount = 3; // Initial widget count
+
         function handleWidgetClick(widgetNumber) {
-            alert("You clicked Widget " + widgetNumber);
+            // Redirect to a page with the same widget info
+            window.location.href = `widget${widgetNumber}.html`;
         }
 
         function openCreateWidgetModal() {
@@ -85,7 +88,7 @@
             const widgetDiv = document.createElement('div');
             widgetDiv.className = 'widget';
             widgetDiv.onclick = function () {
-                handleWidgetClick(document.querySelectorAll('.widget').length + 1);
+                handleWidgetClick(widgetCount + 1);
             };
             widgetDiv.innerHTML = `
                 <h2>${title}</h2>
@@ -95,6 +98,8 @@
             // Append the new widget to the dashboard
             const dashboardContent = document.querySelector('.dashboard-content');
             dashboardContent.appendChild(widgetDiv);
+
+            widgetCount++; // Increment widget count
 
             // Close the modal
             closeCreateWidgetModal();
